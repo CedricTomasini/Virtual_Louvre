@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF8" standalone="no"?>
+<alto xmlns="http://bibnum.bnf.fr/ns/alto_prod" xmlns:xlink="http://www.w3.org/TR/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="alto.6477124" xsi:schemaLocation="http://bibnum.bnf.fr/ns/alto_prod http://bibnum.bnf.fr/ns/alto_prod.xsd">
+  <Description>
+    <MeasurementUnit>pixel</MeasurementUnit>
+    <sourceImageInformation>
+      <fileName>00000011.tif</fileName>
+    </sourceImageInformation>
+    <OCRProcessing ID="OCR_1">
+      <ocrProcessingStep>
+        <processingDateTime>2013-01-22</processingDateTime>
+        <processingStepDescription>[001_OCR_BRUT]OCR BRUT 99.560 %</processingStepDescription>
+        <processingStepDescription>[002_TOTAL_CHARS]{87}</processingStepDescription>
+        <processingStepDescription>[003_TOTAL_CHARS_USED]{80}</processingStepDescription>
+        <processingStepDescription>[004_TOTAL_CHARS_SUSPECTS_USED]{0}</processingStepDescription>
+        <processingStepDescription>[005_TOTAL_CHARS_UNUSED]{7}</processingStepDescription>
+        <processingStepDescription>[006_TOTAL_CHARS_SUSPECTS_UNUSED]{0}</processingStepDescription>
+        <processingStepDescription>[007_TOTAL_STRINGS]{15}</processingStepDescription>
+        <processingStepDescription>[011_CHARS_PUNCTUATION]{7}</processingStepDescription>
+        <processingStepDescription>[012_CHARS_DIGITS]{0}</processingStepDescription>
+        <processingStepDescription>[013_CHARS_SUSPECT]{0}</processingStepDescription>
+        <processingStepDescription>[022_CHARS_UNUSED_BY_BLOCK]{0}</processingStepDescription>
+        <processingStepDescription>[111_LIGS_DETECTED_CURV]{0}</processingStepDescription>
+        <processingStepSettings>OCR 99.970 %</processingStepSettings>
+      </ocrProcessingStep>
+    </OCRProcessing>
+  </Description>
+  <Styles>
+    <TextStyle FONTFAMILY="Times" FONTSIZE="12" ID="TXT_1"/>
+  </Styles>
+  <Layout>
+    <Page HEIGHT="3478" ID="PAG_00000011" PHYSICAL_IMG_NR="1" QUALITY="OK" WIDTH="2263">
+    <PrintSpace HEIGHT="567" HPOS="577" ID="PAG_00000011_PrintSpace" VPOS="1339" WIDTH="1381">
+    <GraphicalElement HEIGHT="83" HPOS="577" ID="PAG_00000011_GE000001" VPOS="1339" WIDTH="1381"/>
+    <TextBlock HEIGHT="48" HPOS="664" ID="PAG_00000011_TB000001" STYLEREFS="TXT_1" VPOS="1464" WIDTH="1171" language="fr">
+      <TextLine HEIGHT="48" HPOS="664" ID="PAG_00000011_TL000001" STYLEREFS="TXT_1" VPOS="1464" WIDTH="1171">
+        <String CONTENT="TYPOGRAPHIE," HEIGHT="45" HPOS="664" ID="PAG_00000011_ST000001" STYLEREFS="TXT_1" VPOS="1464" WC="1" WIDTH="282"/>
+        <SP HPOS="946" ID="PAG_00000011_SP000001" VPOS="1467" WIDTH="30"/>
+        <String CONTENT="CLICHÉS" HEIGHT="35" HPOS="976" ID="PAG_00000011_ST000002" STYLEREFS="TXT_1" VPOS="1467" WC="1" WIDTH="162"/>
+        <SP HPOS="1138" ID="PAG_00000011_SP000002" VPOS="1480" WIDTH="39"/>
+        <String CONTENT="ET" HEIGHT="23" HPOS="1177" ID="PAG_00000011_ST000003" STYLEREFS="TXT_1" VPOS="1480" WC="1" WIDTH="45"/>
+        <SP HPOS="1222" ID="PAG_00000011_SP000003" VPOS="1470" WIDTH="39"/>
+        <String CONTENT="COUVERTURE" HEIGHT="37" HPOS="1261" ID="PAG_00000011_ST000004" STYLEREFS="TXT_1" VPOS="1470" WC="1" WIDTH="266"/>
+        <SP HPOS="1527" ID="PAG_00000011_SP000004" VPOS="1485" WIDTH="38"/>
+        <String CONTENT="EN" HEIGHT="24" HPOS="1565" ID="PAG_00000011_ST000005" STYLEREFS="TXT_1" VPOS="1485" WC="1" WIDTH="46"/>
+        <SP HPOS="1611" ID="PAG_00000011_SP000005" VPOS="1486" WIDTH="43"/>
+        <String CONTENT="GRAVURE" HEIGHT="26" HPOS="1654" ID="PAG_00000011_ST000006" STYLEREFS="TXT_1" VPOS="1486" WC="1" WIDTH="181"/>
+      </TextLine>
+    </TextBlock>
+    <TextBlock HEIGHT="24" HPOS="1214" ID="PAG_00000011_TB000002" STYLEREFS="TXT_1" VPOS="1564" WIDTH="67" language="fr">
+      <TextLine HEIGHT="24" HPOS="1214" ID="PAG_00000011_TL000002" STYLEREFS="TXT_1" VPOS="1564" WIDTH="67">
+        <String CONTENT="PAR" HEIGHT="24" HPOS="1214" ID="PAG_00000011_ST000007" STYLEREFS="TXT_1" VPOS="1564" WC="0.99" WIDTH="67"/>
+      </TextLine>
+    </TextBlock>
+    <TextBlock HEIGHT="134" HPOS="800" ID="PAG_00000011_TB000003" STYLEREFS="TXT_1" VPOS="1634" WIDTH="899" language="fr">
+      <TextLine HEIGHT="46" HPOS="966" ID="PAG_00000011_TL000003" STYLEREFS="TXT_1" VPOS="1634" WIDTH="570">
+        <String CONTENT="BRAUN" HEIGHT="36" HPOS="966" ID="PAG_00000011_ST000008" STYLEREFS="TXT_1" VPOS="1634" WC="1" WIDTH="167"/>
+        <SP HPOS="1133" ID="PAG_00000011_SP000006" VPOS="1639" WIDTH="29"/>
+        <String CONTENT="&amp;" HEIGHT="31" HPOS="1162" ID="PAG_00000011_ST000009" STYLEREFS="TXT_1" VPOS="1639" WC="1" WIDTH="29"/>
+        <SP HPOS="1191" ID="PAG_00000011_SP000007" VPOS="1638" WIDTH="29"/>
+        <String CONTENT="Cie.," HEIGHT="42" HPOS="1220" ID="PAG_00000011_ST000010" STYLEREFS="TXT_1" VPOS="1638" WC="1" WIDTH="87"/>
+        <SP HPOS="1307" ID="PAG_00000011_SP000008" VPOS="1639" WIDTH="39"/>
+        <String CONTENT="EDITEURS" HEIGHT="36" HPOS="1346" ID="PAG_00000011_ST000011" STYLEREFS="TXT_1" VPOS="1639" WC="1" WIDTH="190"/>
+      </TextLine>
+      <TextLine HEIGHT="52" HPOS="800" ID="PAG_00000011_TL000004" STYLEREFS="TXT_1" VPOS="1716" WIDTH="899">
+        <String CONTENT="PARIS" HEIGHT="35" HPOS="800" ID="PAG_00000011_ST000012" STYLEREFS="TXT_1" VPOS="1716" WC="1" WIDTH="162"/>
+        <SP HPOS="962" ID="PAG_00000011_SP000009" VPOS="1729" WIDTH="40"/>
+        <String CONTENT="ET" HEIGHT="23" HPOS="1002" ID="PAG_00000011_ST000013" STYLEREFS="TXT_1" VPOS="1729" WC="1" WIDTH="50"/>
+        <SP HPOS="1052" ID="PAG_00000011_SP000010" VPOS="1720" WIDTH="41"/>
+        <String CONTENT="DORNACH" HEIGHT="36" HPOS="1093" ID="PAG_00000011_ST000014" STYLEREFS="TXT_1" VPOS="1720" WC="1" WIDTH="281"/>
+        <SP HPOS="1374" ID="PAG_00000011_SP000011" VPOS="1724" WIDTH="44"/>
+        <String CONTENT="(HAUT-RHIN)" HEIGHT="44" HPOS="1418" ID="PAG_00000011_ST000015" STYLEREFS="TXT_1" VPOS="1724" WC="0.98" WIDTH="281"/>
+      </TextLine>
+    </TextBlock>
+    <GraphicalElement HEIGHT="88" HPOS="577" ID="PAG_00000011_GE000002" VPOS="1818" WIDTH="1381"/>
+    </PrintSpace>
+    </Page>
+  </Layout>
+</alto>
