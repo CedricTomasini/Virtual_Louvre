@@ -2,8 +2,7 @@ I/1
 II/I11
 III/111/S III/S des sept cheminées
 IV
-V/S V/V tr E
-VI/S VI
+V/S V
 VII
 VIII
 IX
@@ -62,12 +61,12 @@ Esc Mollien
 Esc T T/Palier esc T T
 Galerie d'Apollon/Gai d'Apollon/Gal d'Apollon
 Galerie du Luxembourg/Galerie du Luxembourg VI tr E
-I tr A
-I tr B
-I tr C
-I tr D
-I tr E
-I tr F
+VI tr A/VI/S VI
+VI tr B
+VI tr C
+VI tr D
+VI tr E/V tr E
+VI tr F
 S de la Colonnade/Ire Salle de la Colonnade
 Marine/Marine 1/
 Musée Charles X S I/Musée Charles X S 1
