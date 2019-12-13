@@ -1,0 +1,144 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Caster : utility
+{
+    public Text text;
+    public GameObject imageOriginal;
+    public GameObject image;
+    public Canvas canvas;
+    public SpriteRenderer spriteRenderer;
+    public GameObject player;
+    
+    bool q=false;
+    //public GameObject player;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+        //image = Instantiate(image);
+        //  Debug.Log("canvas initiation");
+
+        //  GameObject myText;
+        //  Canvas canvas;
+        //  RectTransform rectTransform;
+
+        //  // Canvas
+
+        //// player.AddComponent<Canvas>();
+        //text=.GetComponent<Text>(); 
+
+        //  //canvas = player.GetComponent<Canvas>();
+        //  //canvas.name = "michel le canvas";
+        //  //canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        //  //player.AddComponent<CanvasScaler>();
+        //  //player.AddComponent<GraphicRaycaster>();
+
+
+
+        //  // Text
+        //  myText = new GameObject();
+        //  myText.transform.parent = player.transform;
+        //  myText.name = "wibble";
+
+        //  text = myText.AddComponent<Text>();
+        //  //text.font = (Font)Resources.Load("MyFont");
+        //  text.text = "Hello and welcome to the louvre 1923";
+        //  text.fontSize = 100;
+
+        //  // Text position
+        //  rectTransform = text.GetComponent<RectTransform>();
+        //  rectTransform.localPosition = new Vector3(0, 0, 0);
+        //  rectTransform.sizeDelta = new Vector2(400, 200);
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        if (!q)
+        {
+            image.GetComponent<Picture>().DisableSprite();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            image.GetComponent<Picture>().ToggleSprite();
+            q = !q;
+            //if (q)
+            //{
+            //    q = !q;
+            //    DestroyImage();
+            //}
+            //else
+            //{
+            //    q = !q;
+            //    CreateImage();
+        //}
+        }
+        RaycastHit hit;
+        string pastCollider="";
+        float theDistance;
+        transform.position = player.transform.position;
+        Vector3 forward = player.transform.TransformDirection(Vector3.forward) * 10;
+        Debug.DrawRay(transform.position, forward, Color.green);
+
+        if (Physics.Raycast(player.transform.position,forward, out hit))
+        {
+            theDistance = hit.distance;
+            string newColider = hit.collider.gameObject.name;
+            if (pastCollider.Equals(newColider))
+            {
+                image.GetComponent<Picture>().DisableSprite();
+            }
+            pastCollider = hit.collider.gameObject.name;
+            //Debug.Log(theDistance + " " + hit.collider.gameObject.name);
+            if (hit.collider.gameObject.name == "Painting(Clone)")
+            {
+                text.text = hit.collider.gameObject.GetComponent<Painting>().info.author + " \n" +
+                   hit.collider.gameObject.GetComponent<Painting>().info.title;
+                if (q)
+                {
+                    //Debug.Log("trying to show image");
+                    //Debug.Log(image);
+                    image.GetComponent<Picture>()
+                        .SetImage(hit.collider.gameObject.GetComponent<Painting>().info.image_path);
+                    image.GetComponent<Resize>()
+                        .Rescale(hit.collider.gameObject.GetComponent<Painting>().info.width,
+                        hit.collider.gameObject.GetComponent<Painting>().info.height);
+
+                    image.GetComponent<Picture>().EnableSprite();
+                }
+            }
+            else
+            {
+                q = false;
+                image.GetComponent<Picture>().DisableSprite();
+                text.text = "Room : " + roomName;
+            }
+
+        }
+        else
+        {
+            image.GetComponent<Picture>().DisableSprite();
+            q = false;
+        }
+    }
+
+    public void CreateImage()
+    {
+        
+        //Debug.Log("new object");
+        //image = Instantiate(imageOriginal);
+        //image.AddComponent<Image>();
+    //  image.GetComponent<Image>().material.SetTexture("blob",
+    //       Resources.Load<Texture>(GetComponent<Painting>().info.image_path) as Texture); 
+    }
+    public void DestroyImage()
+    {
+
+        //Debug.Log("destroy object");
+        //Destroy(image);
+        
+    }
+}

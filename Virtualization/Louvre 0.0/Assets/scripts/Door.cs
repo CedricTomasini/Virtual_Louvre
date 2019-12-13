@@ -1,0 +1,46 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Door : utility
+{
+   // public GameObject myroom;
+   // public GameObject door;
+    public DoorInfo info;
+    
+
+    
+
+    //change level 
+    // restart lvl with new data 
+    public struct DoorInfo
+    {
+        public float p00;
+        public float p01;
+        public float p10;
+        public float p11;
+        public string name;
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        roomChange = true;
+        roomName = info.name;
+    }
+    
+    public void place(Vector3 pos)
+    {
+        
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
