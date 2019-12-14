@@ -63,13 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Map.cs" />
     <Compile Include="Assets\MaterialTiling.cs" />
     <Compile Include="Assets\RoomDisplay.cs" />
     <Compile Include="Assets\scripts\Caster.cs" />
     <Compile Include="Assets\scripts\Door.cs" />
     <Compile Include="Assets\scripts\FollowPlayer.cs" />
     <Compile Include="Assets\scripts\Json.cs" />
+    <Compile Include="Assets\scripts\Map.cs" />
     <Compile Include="Assets\scripts\Painting.cs" />
     <Compile Include="Assets\scripts\Picture.cs" />
     <Compile Include="Assets\scripts\place.cs" />
