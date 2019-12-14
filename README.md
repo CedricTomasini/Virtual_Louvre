@@ -10,4 +10,4 @@ Open the folder _Louvre 0.0_ as a project in Unity and run it through Unity inte
 
 ## Data processing pipeline
 
-![Complete data processing architecture](http://fdh.epfl.ch/index.php/File:Concrete_pipeline_virtual_louvre.png)
+Schema on http://fdh.epfl.ch/index.php/File:Concrete_pipeline_virtual_louvre.png
