@@ -6,4 +6,4 @@ Cédric Tomasini & Robin Szymczak
 
 ## Run the project
 
-Open the folder ''Louvre 0.0'' as a project in Unity and run it through Unity interface.
+Open the folder _Louvre 0.0_ as a project in Unity and run it through Unity interface.
