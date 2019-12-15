@@ -158,11 +158,13 @@ public class PlaceIt : utility
                     // interdiction de traverser les murs
                     if (r.topright.x > wall.topright.x || r.topright.y > wall.topright.y || r.bottomleft.x < wall.bottomleft.x || r.bottomleft.y < wall.bottomleft.y)
                     {
+
                         continue;
                     }
                     var e = self_energy(r, rs, wall, i);
                     if (e < es[i])
                     {
+                       
                         // si la nouvelle energie est plus basse on la garde
                         rs[i] = r;
                         es[i] = e;
@@ -173,73 +175,77 @@ public class PlaceIt : utility
             return rs;
         }
 
-        public void PlacePaint(List<GameObject> paintings, Vector3 offset, Vector3 direction,int it)
+        public void PlacePaint(List<GameObject> paintings, Vector3 offset, Vector3 direction, int it)
         {
             Vector3 v = new Vector3(0, 0, 0);
-            Debug.Log("number of paintings "+ paintings.Count);
 
             List<Rect> rs = new List<Rect>();
-            //Rect item = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
             for (int i = 0; i < paintings.Count; i++)
             {
-                
-                Rect rect = new Rect(0, 0, 0, 0);
-                
-                rect.bottomleft.x = -paintings[i].GetComponent<Painting>().info.width / 2;
-                rect.bottomleft.y = -paintings[i].GetComponent<Painting>().info.height / 2;
-                rect.topright.x = paintings[i].GetComponent<Painting>().info.width / 2;
-                rect.topright.y = paintings[i].GetComponent<Painting>().info.height / 2;
-                
+
+                Rect rect = new Rect(0f, 0f, 0f, 0f);
+                if (direction.x != 0)
+                {
+                    rect.bottomleft.x = paintings[i].transform.position.z -
+                        paintings[i].GetComponent<Painting>().info.width / 2;
+                    rect.bottomleft.y = paintings[i].transform.position.y -
+                        paintings[i].GetComponent<Painting>().info.height / 2;
+                    rect.topright.x = paintings[i].transform.position.z +
+                        paintings[i].GetComponent<Painting>().info.width / 2;
+                    rect.topright.y = paintings[i].transform.position.y +
+                        paintings[i].GetComponent<Painting>().info.height / 2;
+                }
+                else
+                {
+                    rect.bottomleft.x = paintings[i].transform.position.x -
+                        paintings[i].GetComponent<Painting>().info.width / 2;
+                    rect.bottomleft.y = paintings[i].transform.position.y -
+                        paintings[i].GetComponent<Painting>().info.height / 2;
+                    rect.topright.x = paintings[i].transform.position.x +
+                        paintings[i].GetComponent<Painting>().info.width / 2;
+                    rect.topright.y = paintings[i].transform.position.y +
+                        paintings[i].GetComponent<Painting>().info.height / 2;
+                }
+
                 rs.Add(rect);
             }
-            Rect wall = new Rect((-paintings[0].GetComponent<Painting>().wallLength / 2),
-                -paintings[0].GetComponent<Painting>().wallHeight / 2,
-                paintings[0].GetComponent<Painting>().wallLength / 2,
-                paintings[0].GetComponent<Painting>().wallHeight / 2);
 
-            
-            //minimize_energy(rs, wall, 1000);
-            ////Console.WriteLine(total_energy(rs, wall));
-            // minimize_energy(rs, wall, 1000);
-            //// Console.WriteLine(total_energy(rs, wall));
-            // minimize_energy(rs, wall, 1000);
-            //// Console.WriteLine(total_energy(rs, wall));
-            // minimize_energy(rs, wall, 1000);
-            //Debug.Log(total_energy(rs, wall));
-            minimize_energy(rs, wall, it);
-            // Console.WriteLine(total_energy(rs, wall));
-            //Debug.Log(total_energy(rs, wall));
-            //rs.ForEach((x) =>
-            //{
-
-            //    Console.WriteLine(x.center());
-            //});
-
-            for (int c = 0; c < paintings.Count; c++)
+            Rect wall = new Rect(0, 0, 0, 0);
+            if (direction.x != 0)
             {
-
-                
-                v.Set(0, 0, 0);
-                //Debug.Log("init v :" + v);
-                v.y = rs[c].center().y;
-                v.x = (rs[c].center().x * direction).x;
-
-                if (direction.x==0)
-                {
-
-                    v.z = rs[c].center().x;
-                   // v.x = offset.x;
-                }
-               // Debug.Log("after operation v :"+v);
-
-                v += offset;
-                paintings[c].GetComponent<Painting>().place(v);
-
-                //Debug.Log("final v :" + v);
-
-                // paintings[c].place();
+                wall.bottomleft.x = offset.z+(-paintings[0].GetComponent<Painting>().wallLength / 2) ;
+                wall.bottomleft.y = offset.y + (-paintings[0].GetComponent<Painting>().wallHeight / 2);
+                wall.topright.x = offset.z + paintings[0].GetComponent<Painting>().wallLength / 2;
+                wall.topright.y = offset.y + paintings[0].GetComponent<Painting>().wallHeight / 2;
+            }
+            else
+            {
+                wall.bottomleft.x = +offset.x + (-paintings[0].GetComponent<Painting>().wallLength / 2);
+                wall.bottomleft.y = offset.y + (-paintings[0].GetComponent<Painting>().wallHeight / 2);
+                wall.topright.x = offset.x + paintings[0].GetComponent<Painting>().wallLength / 2;
+                wall.topright.y = offset.y + paintings[0].GetComponent<Painting>().wallHeight / 2;
             }
 
+            rs = minimize_energy(rs, wall, it);
+            for (int c = 0; c < paintings.Count; c++)
+            {
+                v.Set(0, 0, 0);
+                v.y = rs[c].center().y;
+                //v.x = rs[c].center().x;
+
+                if (direction.x!=0)
+                {
+                    v.z = rs[c].center().x;
+                   v.x = paintings[c].transform.position.x;
+                }
+                else
+                {
+                    v.x= rs[c].center().x;
+                    v.z = paintings[c].transform.position.z;
+                }
+                //v += offset;
+                paintings[c].GetComponent<Painting>().place(v);
+            }
         }
    }
 }

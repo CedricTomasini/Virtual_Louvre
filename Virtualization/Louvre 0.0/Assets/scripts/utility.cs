@@ -7,7 +7,7 @@ using System;
 
 public class utility : MonoBehaviour
 {
-    static bool start=true;
+
     public static int timer;
     public static bool roomChange;
     public static string roomName;
@@ -22,7 +22,6 @@ public class utility : MonoBehaviour
         public float height;
         public string wall;
         public char cardi;
-        //public string life;
         public string image_path;
 
         public void transform()
@@ -30,13 +29,12 @@ public class utility : MonoBehaviour
             char[] orientation = { 'o', 'e', 's', 'n' };
             if (wall.Length != 0)
             {
-
-               
                 wall = wall.ToLower();
                 cardi = wall[0];
             }
             else cardi = orientation[UnityEngine.Random.Range(0, 3)];
-            //meter transform and
+            //doublee the size of the painting and converts them into meter 
+            //if no width and height found default values are assigned
             if (width == 0)
                 width = 2f;
             else
@@ -51,7 +49,7 @@ public class utility : MonoBehaviour
             if (image_path.Length != 0)
             {
                 image_path = image_path.Remove(image_path.Length - 4);
-                Debug.Log(image_path);
+
             }
 
 
@@ -64,7 +62,7 @@ public class utility : MonoBehaviour
         public Painting_info[] tab;
 
     }
-
+    //gives the direction in the reference frame given the cardinal point
     static public Vector3 direction(char c)
     {
 
@@ -82,19 +80,8 @@ public class utility : MonoBehaviour
         }
         return new Vector3(0, 0, 0);
 
-        //switch (c)
-        //{
-        //    case 'n':
-        //    case 'N': return new Vector3(0, 0, 1);
-        //    case 's':
-        //    case 'S': return new Vector3(0, 0, -1);
-        //    case 'O':
-        //    case 'o': return new Vector3(-1, 0, 0);
-        //    case 'e':
-        //    case 'E': return new Vector3(1, 0, 0);
-        //    default: Debug.Log("error detected, wrong char"); break;
-        //}
-        return new Vector3(0, 0, 0);
+        
+        
     }
     // Start is called before the first frame update
 

@@ -14,13 +14,12 @@ GameObject:
   - component: {fileID: 8140197233435447910}
   - component: {fileID: 8140197233435447911}
   - component: {fileID: 54440441902507820}
-  - component: {fileID: 6949357073586086461}
   m_Layer: 0
   m_Name: Painting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8140197233435447899
 Transform:
@@ -53,15 +52,15 @@ MeshRenderer:
   m_GameObject: {fileID: 8140197233435447904}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 891c44f2263c7e147b99ae62b1bbd54b, type: 2}
+  - {fileID: 2100000, guid: c6bf6cf967f958f4c92768fbd7ff8165, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,7 +70,7 @@ MeshRenderer:
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
+  m_ImportantGI: 1
   m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
@@ -92,8 +91,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2781967, y: 5.2449493, z: 1}
-  m_Center: {x: 0.0444358, y: 0.23070431, z: 0}
+  m_Size: {x: 1.2781967, y: 11.890592, z: 1}
+  m_Center: {x: 0.0444358, y: 1.0851436, z: 0}
 --- !u!114 &8140197233435447911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +121,7 @@ MonoBehaviour:
     cardi: 0
     image_path: 
   texture: {fileID: 2800000, guid: 2e0f2c2af7d3f93439be90893347139b, type: 3}
-  current_mat: {fileID: 2100000, guid: 891c44f2263c7e147b99ae62b1bbd54b, type: 2}
+  current_mat: {fileID: 2100000, guid: c6bf6cf967f958f4c92768fbd7ff8165, type: 2}
 --- !u!54 &54440441902507820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,41 +138,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!108 &6949357073586086461
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140197233435447904}
-  m_Enabled: 0
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0

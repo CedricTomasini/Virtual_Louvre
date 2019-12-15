@@ -54,7 +54,7 @@ MeshRenderer:
   m_GameObject: {fileID: 6362190717982223977}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -117,8 +117,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.8958073, y: 5.892166, z: 5.5070353}
-  m_Center: {x: -0.3615017, y: 1.710844, z: 0.75890136}
+  m_Size: {x: 2.8731208, y: 5.8921666, z: 3.785186}
+  m_Center: {x: 0.14983901, y: 1.710844, z: -0.10202344}
 --- !u!54 &54564307978034164
 Rigidbody:
   m_ObjectHideFlags: 0

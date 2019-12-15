@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
-using System.IO;
 using System;
 using UnityEngine.UI;
 
@@ -16,27 +14,15 @@ public class Painting : utility
     public float wallHeight=10;
     public float wallLength;
     public Vector3 wallCenter;
-    //public GameObject mesh;
     public Painting_info info;
     public Texture texture;
     public Material current_mat;
-    //public static Text text;
-
-    //public Vector3 speed;
 
 
-    public void inform()
-    {
-        //Debug.Log(canvas);
-        //canvasGO.GetComponent<Text>().text = info.author;
-        //author.text = info.author;
-        
-    }
 
     public void spawn(char c)
     {
         depth = 1;
-        //mesh = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
         Vector3 v = VAbs(direction(c)) * depth;
         
@@ -63,12 +49,12 @@ public class Painting : utility
     public void SetTexture()
     {
 
-        //Debug.Log("i'm putting a texture with path : " + info.image_path);
+       //set the texture from the data path stored in the structure 
+
         Texture texture = Resources.Load<Texture>(info.image_path);
         current_mat.EnableKeyword("_DETAIL_MULX2");
         current_mat.EnableKeyword("_NORMALMAP");
         current_mat.EnableKeyword("_METALLICGLOSSMAP");
-        current_mat.EnableKeyword("_EMISSION");
 
         current_mat = paint.GetComponent<Renderer>().material;
         current_mat.SetTexture(info.title, texture);
@@ -76,51 +62,15 @@ public class Painting : utility
 
         current_mat.mainTexture = texture;
         current_mat.SetTexture("_DetailAlbedoMap", texture);
-        //current_mat.SetTexture("_EmissionColor", texture);
        
-
-    }
-    public void createFrame()
-    {
 
     }
     public void place(Vector3 pos)
     {
-       
         transform.position = pos;
-
-       
     }
     
 
-        // Update is called once per frame
-    void Update()
-    { 
-
-
-    }
-
-    void FixedUpdate()
-    {
-       //// rb = paint.GetComponent<Rigidbody>();
-       // float y = rb.transform.position.y;
-       // if (y >= wallHeight - info.height / 2)
-       //     rb.velocity.Set(0, -rb.velocity.y, 0);
-
-       // float x = rb.transform.position.y;
-       // if (x >= wallCenter.x + (wallLength - info.width / 2)
-       //     || x <= wallCenter.x - (wallLength - info.width / 2))
-       // {
-       //     rb.velocity.Set(-rb.velocity.x, 0, 0);
-       // }
-       // else
-       // {
-       //     float z = rb.transform.position.y;
-       //     if (z >= wallCenter.z + (wallLength - info.width / 2)
-       //         || z <= wallCenter.z - (wallLength - info.width / 2))
-       //         rb.velocity.Set(0, 0, -rb.velocity.z);
-       // }
-
-    }
+     
 }
 

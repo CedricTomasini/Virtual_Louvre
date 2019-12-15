@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.JSONSerializeModule;
+
 using System.IO;
 using System;
 using UnityEngine.UI;
@@ -9,14 +9,10 @@ using UnityEngine.UI;
 
 public class room : utility
 {
-
-    //public Collision collision;
+    public bool removeWhite=true;
     bool roomAnimate;
-    //walls = new List<Wall>();
-    //public bool first = true;
     public GameObject objAnimate;
     public float doorHeight;
-    //int timer=31;
     bool start = true;
     public GameObject door;
     public float wallScale;
@@ -26,26 +22,14 @@ public class room : utility
     public float wall_height = 10;
     public Text title;
     public GameObject player;
-
     Painting new_paint;
     GameObject new_wall;
     public GameObject currentDoor;
-    //public List<GameObject> walls;
-    //public Dictionary<char,GameObject> walls;
     public Dictionary<char, GameObject> walls = new Dictionary<char, GameObject>();
     public List<GameObject> doors;
     public W wallData;
     public D doorData;
     public Painting_tab paintings;
-
-    // /*public Room(char cardi)
-    // {
-    //   //  first = false;
-    //     //Wall well = new Wall(cardi);
-    //     //walls.Add(well);
-    //     //Debug.Log("number of walls in the room :123 " + walls.Count);
-    // }*/
-    // //public void add_wall(Vector2 p0, Vector2 p1, char cardi)
     [Serializable]
     public struct WallInfo {
 
@@ -62,8 +46,6 @@ public class room : utility
         {
             p1 = new Vector2(p10, -p11);
             p0 = new Vector2(p00, -p01);
-            //p0 /= 4;
-            //p1 /= 4;
             card=card.ToLower();
             cardi = card[0];
         }
@@ -88,8 +70,6 @@ public class room : utility
         {
             p1 = new Vector2(p10, -p11);
             p0 = new Vector2(p00, -p01);
-            //p0 /= 4;
-            //p1 /= 4;
         }
     }
     [Serializable]
@@ -97,6 +77,7 @@ public class room : utility
     {
         public DoorInfo[] tab;
     }
+
     public void AddDoor(DoorInfo info)
     {
         Vector3 pos = new Vector3(0, 0, 0);
@@ -104,12 +85,12 @@ public class room : utility
         pos.z = info.p0.y / 2 + info.p1.y / 2;
         pos.y = doorHeight;
 
-        //Debug.Log("door ? " + door + " " + currentDoor);
         currentDoor=Instantiate(door);
         currentDoor.GetComponent<Transform>().position = pos;
         currentDoor.GetComponent<Door>().info.name = info.name;
         doors.Add(currentDoor);
     }
+    //Create a wall object and store it 
     public void AddWall(WallInfo info)
     {
         char cardi = info.cardi;
@@ -119,8 +100,6 @@ public class room : utility
         float wall_depth = 2;
         Vector2 p = p1 - p0;
         float length = p.magnitude;
-        
-
         p0 = (p0 + p1) / 2;
         Vector3 middle = new Vector3(p0.x, wall_height / 2 , p0.y);//middle is the centroid of the wall
         
@@ -139,24 +118,33 @@ public class room : utility
 
         new_wall = Instantiate(awall);
         new_wall.GetComponent<Wall>().wallLength = length;
-        
         walls.Add(info.cardi, new_wall);
         walls[info.cardi].GetComponent<Wall>().set(middle, v, cardi);
         
     }
-
+    //iterate over the walls to make them display their paintings
     public void PaintingDisplay()
     {
         for (int i = 0; i < paintings.tab.Length; i++)
             {
-               
+
+            if(paintings.tab[i].image_path.Length == 0)
+            {
+                if (!removeWhite)
+                {
+                    walls[paintings.tab[i].cardi].GetComponent<Wall>().add_painting(paintings.tab[i]);
+                }
+            }
+            else
+            {
                 walls[paintings.tab[i].cardi].GetComponent<Wall>().add_painting(paintings.tab[i]);
+            }
+           
             }
         foreach (KeyValuePair<char, GameObject> entry in walls)
         {
             int key = entry.Key;
             GameObject gameObj = entry.Value;
-            // Do something here
             entry.Value.GetComponent<Wall>().HangPaintings();
             
         }
@@ -193,8 +181,12 @@ public class room : utility
         string jstring = File.ReadAllText(apath);
         paintings = JsonUtility.FromJson<Painting_tab>("{\"tab\":" + jstring + "}");
         for (int i = 0; i < paintings.tab.Length; i++)
+        {
             paintings.tab[i].transform();
+           
+        }
     }
+    //clear the data in the current room
     public void Clear()
     {
         foreach (KeyValuePair<char, GameObject> entry in walls)
@@ -210,52 +202,40 @@ public class room : utility
         doors.Clear();
 
     }
+    //loads a new room with corresponding files
     public void LoadNew(string roomName, bool start)
     {
-        if (!start)
-            Debug.Log("loading new from collision");
-        //possible reiniatialisation of the bool, have to check
-        
-            
-            Clear();
-            start = false;
-            string dPath = "Assets/Json/doors_json/" + roomName + ".json",
-            pPath = "Assets/Json/paintings_json/" + roomName + ".json",
-            wPath = "Assets/Json/walls_json/" + roomName + ".json";
+        Clear();
+        start = false;
+        string dPath = "Assets/Json/doors_json/" + roomName + ".json",
+        pPath = "Assets/Json/paintings_json/" + roomName + ".json",
+        wPath = "Assets/Json/walls_json/" + roomName + ".json";
 
-            // dPath= Assets / Json / doors_json
-            ExtracDoorData(dPath);
-            ExtractPaintData(pPath);
-            ExtractWallData(wPath);
-            SetPlayer();
+           
+        ExtracDoorData(dPath);
+        ExtractPaintData(pPath);
+        ExtractWallData(wPath);
+        SetPlayer();
         ShowRoom();    
 
-            timer = 0;
+        timer = 0;
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("coliding in room");
-
-        //myroom.GetComponent<room>().LoadNew(info.name, false);
-        //Debug.Log("colision");
-
-
-    }
+  
     public void ShowRoom()
     {
         objAnimate.GetComponent<TitleFading>().DisplayTitle();
-        //objAnimate=player.gameObject.
-        //title.text = "Room :\n" + roomName;
+        
     }
+    //place the player near the center of the room 
     public void SetPlayer()
     {
-        //find algo
+        
         player.transform.position = walls['o'].GetComponent<Transform>().position / 4 +
-             walls['e'].GetComponent<Transform>().position / 4 +
-             walls['s'].GetComponent<Transform>().position / 4 +
-             walls['n'].GetComponent<Transform>().position / 2;
-        player.transform.position -= new Vector3(0, 3.75f, 0);
-        //Debug.Log("player position "+player.transform.position);
+        walls['e'].GetComponent<Transform>().position / 4 +
+        walls['s'].GetComponent<Transform>().position / 4 +
+        walls['n'].GetComponent<Transform>().position / 2;
+        player.transform.position -= new Vector3(0, 4.75f, 0);
+       
 
 
     }
@@ -268,11 +248,11 @@ public class room : utility
     {
         timer = 0;
         //player = Instantiate(player);
-        LoadNew("X",true);
+        LoadNew("XVI",true);
         SetPlayer();
         
         CanvasInitiator();
-       // Debug.Log("canvas name : " + canvas.name);
+       
 
     }
 
@@ -290,6 +270,11 @@ public class room : utility
             LoadNew(roomName, true);
         }
         roomChange = false;
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            removeWhite = !removeWhite;
+
+        }
     }
     
 

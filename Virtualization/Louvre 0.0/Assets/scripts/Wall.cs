@@ -5,43 +5,21 @@ using System.IO;
 using System;
 public class Wall :  PlaceIt
 {
-    public int iteration=5;
-    //public List<Painting> test;
+    public int iteration;
     public float padding;
     public float wallLength;
     public char cardi;
     public GameObject thatWall;
-    //public PlaceIt placing;
     public GameObject paint;
     GameObject new_paint;
     public List<GameObject> paintings_obj;
     
-   // public List<Painting> paintings;
-
-
-
-    /*
-    public Wall(char c)
-    {
-        thatWall = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        Debug.Log("wall created");
-        cardi = c;
-        paintings = null;
-    }
-    */
 
 
     public void add_painting(Painting_info p_info)
     {
         bool b = true;
-        //for (int i = 0; i < paintings.Count; i++)
-        //{
-        //    if (p.Equals(paintings[i]))
-        //    {
-        //        b = false;
-        //        i = paintings.Count;
-        //    }
-        //}
+        
         if (b)
         {
             new_paint = Instantiate(paint);
@@ -49,7 +27,6 @@ public class Wall :  PlaceIt
             new_paint.GetComponent<Painting>().wallLength = wallLength;
             new_paint.GetComponent<Painting>().wallCenter = thatWall.transform.position;
             paintings_obj.Add(new_paint);
-            //paintings.Add(p);
         }
     }
 
@@ -65,10 +42,9 @@ public class Wall :  PlaceIt
     }
     public void HangPaintings()
     {
-        //.Log("hang painting ^s called");
         if (thatWall)
         {
-            //thatWall.transform.se
+            
             for (int i = 0; i < paintings_obj.Count; i++)
             {
                 paintings_obj[i].GetComponent<Painting>().spawn(cardi);
@@ -82,15 +58,16 @@ public class Wall :  PlaceIt
         string displayStyle="inline";
         padding = 0.1f;
         float total = 0;
-        // Debug.Log("displaying paintings");
-        //float wall_depth = 2;
-        //display in line if possible with padding 
         for (int i = 0; i < paintings_obj.Count; i++)
             total += paintings_obj[i].GetComponent<Painting>().info.width;
         if (total + 0.2 * paintings_obj.Count < wallLength)
             displayStyle = "inline";
         else
+        {
             displayStyle = "energie";
+            Debug.Log("energie 1");
+
+        }
 
         float wall_depth = 2;
         Vector3 offset = new Vector3(0, 0, 0);
@@ -98,73 +75,28 @@ public class Wall :  PlaceIt
         if (direction(cardi).z != 0)
         {
             offset += new Vector3(wall_depth / 2, 0, 0)*Math.Sign(direction(cardi).x);
-            //offset.z -= wallLength / 2;
-           // offset -= new Vector3(wall_depth / 2, 0, 0);
+            
         }
         else
         { 
             offset -= new Vector3(0, 0, wall_depth / 2)*Math.Sign(direction(cardi).z);
-            //offset.z -= wallLength / 2;
         }
 
         Program p =new Program();
         
 
         FreezePaint(displayStyle,offset);
-        //if (paintings_obj.Count != 0 && displayStyle=="energie")
-           // p.PlacePaint(paintings_obj, offset, direction(cardi), iteration);
 
-        //thatWall.GetComponent<Rect>().
-        //placing.GetComponent<PlaceIt>().
-        // placing.
-
-
-
-
-        // //display small paintings in columns 
-
-        // //display bigger paintings in the center
-
-        // displayStyle = "inline";
-        // Vector3 p = thatWall.transform.position;
-        // Vector3 offset=new Vector3(0,0,0);
-        // offset += direction(cardi)*(wall_depth/2);
-
-        // if (displayStyle == "inline")
-        // {
-        //     if (direction(cardi).x == 0)
-        //     {
-        //         offset.x -= wallLength / 2;
-        //     }
-        //     else
-        //     {
-        //         offset.z -= wallLength / 2;
-        //     }
-        // }
-        // p += offset;
-        // for (int i = 0; i < paintings_obj.Count; i++)
-        // {
-        //     if (displayStyle == "inline")
-        //         InlineDisplay(p, i);
-
-        //     //if (direction(cardi).x == 0)
-        //     //{
-        //     //    paintings_obj[i].GetComponent<Painting>().rb.constraints =
-        //     //         RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
-        //     //    paintings_obj[i].GetComponent<Painting>().rb.velocity.Set(1,0,0);
-        //     //}
-        //     //else
-        //     //{
-        //     //    paintings_obj[i].GetComponent<Painting>().rb.constraints =
-        //     //         RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX;
-        //     //    paintings_obj[i].GetComponent<Painting>().rb.velocity.Set(0, 0, 1);
-        //     //}
-
-        //     paintings_obj[i].GetComponent<Painting>().place(p);
-        // }
-
+        if (paintings_obj.Count != 0 && displayStyle == "energie")
+        {
+            p.PlacePaint(paintings_obj, transform.position, direction(cardi), 1000);
+           
+        }
+        else if (paintings_obj.Count != 0)
+        {
+            p.PlacePaint(paintings_obj, transform.position, direction(cardi), 20);
+        }
     }
-    // Start is called before the first frame update
 
     public void FreezePaint(string displayStyle,Vector3 offset)
     {
@@ -200,11 +132,7 @@ public class Wall :  PlaceIt
                 paintings_obj[i].GetComponent<Painting>().info.width / 2 + padding
                 + wallLength * (i + 1) / (paintings_obj.Count+1);
             p.z = -(thatWall.transform.position.z+wallDepth / 2)*Math.Sign(direction(cardi).x);
-            if (p.x > wallLength / 2)
-            {
-                Debug.Log("erreur");
-               // p.x = -wallLength / 2;
-            }
+            
         }
         else
         {
@@ -213,19 +141,11 @@ public class Wall :  PlaceIt
                 + wallLength * (i + 1) / (paintings_obj.Count+1);
             p.x = -(thatWall.transform.position.x - wallDepth / 2) * Math.Sign(direction(cardi).z);
             
-            if (p.z > wallLength / 2) ;
-                //p.z = -wallLength / 2;
+           
         }
         p.y = thatWall.transform.position.y;
         return p;
     }
   
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-
-
-    }
 }

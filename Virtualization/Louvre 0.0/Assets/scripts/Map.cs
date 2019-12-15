@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
+   public GameObject here;
     public Material current_mat;
     public Image image;
     public SpriteRenderer sprite;
 
-    // Start is called before the first frame update
     void Start()
     {
         image.enabled = false;
-        //SetImage("Assets/Louvre_map_full.png");
     }
     public void ToggleSprite()
     {
@@ -60,7 +59,7 @@ public class Map : MonoBehaviour
 
         }
 
-        //image.GetComponent<Resize>().Rescale(100, 90);
+        here.GetComponent<Resize>().Rescale(1f, 0.9f);
             
     }
         

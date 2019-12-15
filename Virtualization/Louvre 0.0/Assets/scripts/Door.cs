@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Door : utility
 {
-   // public GameObject myroom;
-   // public GameObject door;
     public DoorInfo info;
-    
-
-    
-
     //change level 
     // restart lvl with new data 
     public struct DoorInfo
@@ -24,32 +18,11 @@ public class Door : utility
     }
     private void OnCollisionEnter(Collision collision)
     {
-
         if (timer > 30)
         {
             roomName = info.name;
             roomChange = true;
         }
-        
-        
-
-
-
     }
-    
-    public void place(Vector3 pos)
-    {
-        
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }

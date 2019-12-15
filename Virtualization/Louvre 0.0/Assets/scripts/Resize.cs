@@ -8,7 +8,6 @@ public class Resize : MonoBehaviour
     float height;
     public RectTransform rectTransform;
     public RectTransform canvasTransform;
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -24,7 +23,7 @@ public class Resize : MonoBehaviour
         ratioH = (width / height);
         ratioV = (height / width);
         if (width > height) {
-            setWidth =  canvasTransform.sizeDelta.x*(80f / 100f) ;
+            setWidth =  canvasTransform.sizeDelta.x*(50f / 100f) ;
             setHeight = ratioV * setWidth;
             
         }
@@ -37,11 +36,6 @@ public class Resize : MonoBehaviour
         rectTransform.sizeDelta = new Vector2(setWidth, setHeight);
     }
 
-    private void OnRectTransformDimensionsChange()
-    {
-        //Rescale(width, height);
-    }
-    // Update is called once per frame
     void Update()
     {
         
